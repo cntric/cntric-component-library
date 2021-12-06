@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from "./ComponentLibrary";
+import {Button, SearchbarDemo} from "./ComponentLibrary";
 import logo from './logo.svg';
 
 function App() {
@@ -7,6 +7,8 @@ function App() {
     <div className="App">
       <h1>Button</h1>
       <Button>Hello world!</Button>
+      <h2>Searchbar</h2>
+      <SearchbarDemo/>
     </div>
   );
 }
