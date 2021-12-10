@@ -61,7 +61,7 @@ export const Button : FC<ButtonProps>  = ({
                 setActive(false);
             })
         }
-    })
+    }, [isLoading])
 
     const invertedBackground = Color(primaryColor).lighten(1/(10 - Color(primaryColor).contrast(Color(backgroundColor)))).hex()
 

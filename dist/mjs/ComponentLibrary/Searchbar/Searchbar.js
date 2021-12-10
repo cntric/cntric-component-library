@@ -35,7 +35,6 @@ export const Searchbar = ({ primaryColor, secondaryColor, tertiaryColor, onChang
                     borderColor: tertiaryColor,
                     backgroundColor: focus ? Color(primaryColor).lighten(1.5).hex() : secondaryColor,
                     borderRight: "none",
-                    height: "100%",
                     borderBottomRightRadius: 0,
                     borderTopRightRadius: 0,
                     ...style

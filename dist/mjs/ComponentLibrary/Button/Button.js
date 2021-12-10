@@ -18,7 +18,7 @@ export const Button = ({ label, primaryColor, secondaryColor, backgroundColor, c
                 setActive(false);
             });
         }
-    });
+    }, [isLoading]);
     const invertedBackground = Color(primaryColor).lighten(1 / (10 - Color(primaryColor).contrast(Color(backgroundColor)))).hex();
     const handleClick = (e) => {
         onClick(e);

@@ -33,7 +33,7 @@ const Button = ({ label, primaryColor, secondaryColor, backgroundColor, children
                 setActive(false);
             });
         }
-    });
+    }, [isLoading]);
     const invertedBackground = (0, color_1.default)(primaryColor).lighten(1 / (10 - (0, color_1.default)(primaryColor).contrast((0, color_1.default)(backgroundColor)))).hex();
     const handleClick = (e) => {
         onClick(e);
