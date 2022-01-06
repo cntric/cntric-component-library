@@ -51,7 +51,11 @@ export const Button : FC<ButtonProps>  = ({
     const [isDisabled, setDisabled] = useState(disabled);
     const [isActive, setActive] = useState(active);
     const [isLoading, setLoading] = useState(loading);
-    const [e, setE] = useState<React.MouseEvent|undefined>(undefined)
+    const [e, setE] = useState<React.MouseEvent|undefined>(undefined);
+
+    useEffect(()=>{
+        if(isDisabled !== disabled) setDisabled(disabled);
+    }, [disabled])
 
     useEffect(()=>{
         if(isLoading){
@@ -98,6 +102,7 @@ export const Button : FC<ButtonProps>  = ({
                 cursor: "pointer",
                 transition: isHovered? "all .1s ease-in-out" : "",
                 display: "inline-block",
+                position : "relative",
                 color: isHovered? secondaryColor : !invert ? primaryColor : secondaryColor,
                 borderTop: `1px solid ${primaryColor}`,
                 borderLeft: `1px solid ${primaryColor}`,
@@ -109,9 +114,13 @@ export const Button : FC<ButtonProps>  = ({
         >{label||children}<span style={{display: isLoading||loading ? "inline-block" : "none"}}>&ensp;</span><Spinner
             animation="border"
             style={{
+                position : "absolute",
+                left : "50%",
+                top : "50%",
+                transform : "translate(-50%, -50%)",
                 display : isLoading||loading ? "inline-block" : "none", 
                 height : "15px",
-                width: "15px"
+                width : "15px"
             }}
             ></Spinner>
         </BootstrapButton>

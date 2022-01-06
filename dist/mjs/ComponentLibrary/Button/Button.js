@@ -11,6 +11,10 @@ export const Button = ({ label, primaryColor, secondaryColor, backgroundColor, c
     const [isLoading, setLoading] = useState(loading);
     const [e, setE] = useState(undefined);
     useEffect(() => {
+        if (isDisabled !== disabled)
+            setDisabled(disabled);
+    }, [disabled]);
+    useEffect(() => {
         if (isLoading) {
             action(e).then(() => {
                 setDisabled(false);
@@ -41,6 +45,7 @@ export const Button = ({ label, primaryColor, secondaryColor, backgroundColor, c
             cursor: "pointer",
             transition: isHovered ? "all .1s ease-in-out" : "",
             display: "inline-block",
+            position: "relative",
             color: isHovered ? secondaryColor : !invert ? primaryColor : secondaryColor,
             borderTop: `1px solid ${primaryColor}`,
             borderLeft: `1px solid ${primaryColor}`,
@@ -49,6 +54,10 @@ export const Button = ({ label, primaryColor, secondaryColor, backgroundColor, c
             backgroundColor: isHovered ? primaryColor : invert ? invertedBackground : secondaryColor,
             ...style,
         }, children: [label || children, _jsx("span", { style: { display: isLoading || loading ? "inline-block" : "none" }, children: "\u2002" }, void 0), _jsx(Spinner, { animation: "border", style: {
+                    position: "absolute",
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)",
                     display: isLoading || loading ? "inline-block" : "none",
                     height: "15px",
                     width: "15px"

@@ -26,6 +26,10 @@ const Button = ({ label, primaryColor, secondaryColor, backgroundColor, children
     const [isLoading, setLoading] = (0, react_1.useState)(loading);
     const [e, setE] = (0, react_1.useState)(undefined);
     (0, react_1.useEffect)(() => {
+        if (isDisabled !== disabled)
+            setDisabled(disabled);
+    }, [disabled]);
+    (0, react_1.useEffect)(() => {
         if (isLoading) {
             action(e).then(() => {
                 setDisabled(false);
@@ -52,7 +56,11 @@ const Button = ({ label, primaryColor, secondaryColor, backgroundColor, children
         setHovered(false);
         onMouseLeave(e);
     };
-    return ((0, jsx_runtime_1.jsxs)(react_bootstrap_1.Button, Object.assign({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, variant: `outline`, disabled: isDisabled || disabled, active: isActive || active, size: size, onClick: handleClick, style: Object.assign({ cursor: "pointer", transition: isHovered ? "all .1s ease-in-out" : "", display: "inline-block", color: isHovered ? secondaryColor : !invert ? primaryColor : secondaryColor, borderTop: `1px solid ${primaryColor}`, borderLeft: `1px solid ${primaryColor}`, borderBottom: `1px solid ${primaryColor}`, borderRight: `1px solid ${primaryColor}`, backgroundColor: isHovered ? primaryColor : invert ? invertedBackground : secondaryColor }, style) }, { children: [label || children, (0, jsx_runtime_1.jsx)("span", Object.assign({ style: { display: isLoading || loading ? "inline-block" : "none" } }, { children: "\u2002" }), void 0), (0, jsx_runtime_1.jsx)(react_bootstrap_1.Spinner, { animation: "border", style: {
+    return ((0, jsx_runtime_1.jsxs)(react_bootstrap_1.Button, Object.assign({ onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave, variant: `outline`, disabled: isDisabled || disabled, active: isActive || active, size: size, onClick: handleClick, style: Object.assign({ cursor: "pointer", transition: isHovered ? "all .1s ease-in-out" : "", display: "inline-block", position: "relative", color: isHovered ? secondaryColor : !invert ? primaryColor : secondaryColor, borderTop: `1px solid ${primaryColor}`, borderLeft: `1px solid ${primaryColor}`, borderBottom: `1px solid ${primaryColor}`, borderRight: `1px solid ${primaryColor}`, backgroundColor: isHovered ? primaryColor : invert ? invertedBackground : secondaryColor }, style) }, { children: [label || children, (0, jsx_runtime_1.jsx)("span", Object.assign({ style: { display: isLoading || loading ? "inline-block" : "none" } }, { children: "\u2002" }), void 0), (0, jsx_runtime_1.jsx)(react_bootstrap_1.Spinner, { animation: "border", style: {
+                    position: "absolute",
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)",
                     display: isLoading || loading ? "inline-block" : "none",
                     height: "15px",
                     width: "15px"
